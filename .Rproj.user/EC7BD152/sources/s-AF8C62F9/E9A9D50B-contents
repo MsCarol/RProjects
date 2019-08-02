@@ -1,0 +1,33 @@
+#Set the working Environment
+# Install Packages
+#Install "dplyr" , "purr", "readxl"
+
+#Subsetting - Extract the necesary data for analysus
+#Unsing Indices, Logical Operations(TRUE, FALSE), Names of Objects
+
+library(dplyr)
+library(purrr)
+library(readxl)
+
+#Import the datasets
+
+my_data <- read_excel("data/Marketing-Customer-Value-Analysis-Merged.xlsx")
+class(my_data)
+
+#Look at the data
+str(my_data)
+my_data %>% glimpse()
+
+#Subset the data : Let's pick only what we need
+#Select a single  column
+clean_my_data <- my_data$`Location Code`
+clean_my_data
+
+#Select multiple columns ( Using Base R)
+clean_my_data1 <- my_data[, c("Location Code", "Total Claim Amount")]
+clean_my_data1
+#Using dplyr
+clean_my_data2 <- my_data %>% select("Location Code", "Total Claim Amount")
+clean_my_data2
+
+
